@@ -6,6 +6,5 @@ experiments/
 *.pt
 *.pth
 *.h5
-data/
 wandb/
 .DS_Store
