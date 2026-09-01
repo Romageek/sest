@@ -1,7 +1,3 @@
-# Code and data will be released soon
-
-N-UCF Sports dataset download link: https://doi.org/10.5281/zenodo.20729613
-=======
 # SEST: Saliency Transformer for Event Data
 
 Official PyTorch implementation of **"Exploring Deep Learning for Event-Based Saliency Prediction with a Transformer-Based Model"**.
