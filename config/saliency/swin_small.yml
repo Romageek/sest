@@ -1,0 +1,90 @@
+name: swin_small
+precision: 16
+exp_path: experiments/saliency/swin_small
+        
+datasets:
+    # IMPORTANT: Update this to your custom data root
+    train_dir: [ ../DHF1K/ucf-001/training]
+    test_dir: [ ../DHF1K/ucf-001/test]
+    val_dir: [../DHF1K/ucf-001/val2]
+    event_bins: 14
+    use_polarity: true 
+    num_workers: 4
+    batch_size: 20
+    persistent_workers: false
+    pin_memory: false
+      
+network:
+    type: SWINPad
+    load_teacher: false
+    pretrain_img_size: 192
+    patch_size: 4
+    in_chans: 2 
+    embed_dim: 96
+    depths: 
+        - 2 
+        - 2 
+        - 6
+        - 2
+    num_heads: 
+        - 3
+        - 6
+        - 12
+        - 24
+    window_size: 7
+    mlp_ratio: 4
+    qkv_bias: true
+    qk_scale: null
+    drop_rate: 0
+    drop_path_rate: 0
+    ape: false
+    patch_norm: true
+    use_checkpoint: false
+    pretrained_checkpoint: pr.pt
+    keep_patch_keys: false
+    decoder: cnn 
+
+swin_decoder:
+    type: SWINPad
+    img_size: 224
+    patch_size: 4
+    in_chans: 1 
+    embed_dim: 96
+    depths: 
+        - 1 
+        - 1 
+        - 2
+        - 1
+    num_heads: 
+        - 3
+        - 6
+        - 12
+        - 24
+    window_size: 7
+    mlp_ratio: 4
+    qkv_bias: true
+    qk_scale: null
+    drop_rate: 0
+    drop_path_rate: 0
+    ape: false
+    patch_norm: true
+    use_checkpoint: false
+    keep_patch_keys: false
+    
+head_main:
+    in_channels: 
+        - 96
+        - 192
+        - 384
+        - 768
+    num_classes: 14
+        
+train:
+    type: TrainerSaliency 
+    epoch: 30
+    base_lr: 0.08
+    warmup_epoch: 1
+    weight_decay: 0.01
+    check_val_every_n_epoch: 1
+    sync_batchnorm: true
+
