@@ -9,7 +9,6 @@ Romaric Mazna, Sai Deepesh Pokala, Jean Martinet
 
 > [paper](https://arxiv.org/abs/2605.23790) | [arXiv PDF](https://arxiv.org/pdf/2605.23790) | [supp](./docs/supplementary.pdf) | [project page](https://romageek.github.io/sest) | [N-UCF Sports dataset](https://doi.org/10.5281/zenodo.20729613)
 
-<!-- TODO: replace the supp / project page links above once they are live. -->
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.23790-b31b1b.svg)](https://arxiv.org/abs/2605.23790)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20729613.svg)](https://doi.org/10.5281/zenodo.20729613)
@@ -176,7 +175,7 @@ python3 train_sal.py --opt config/saliency/swin_small.yml --gpus 4
 | `--opt` | Path to the YAML config |
 | `--gpus` | Number of GPUs |
 
-Default training schedule (set in the config): 30 epochs, base LR 0.08, 1 warm-up epoch, weight decay 0.01, mixed precision (`precision: 16`).
+Default training schedule (set in the config): 30 epochs, base LR 0.08, mixed precision (`precision: 16`).
 
 Logs and checkpoints are written under `exp_path` (`experiments/saliency/swin_small` by default), and follow the pattern
 `cnn={fold}-epoch={epoch}-val_loss={loss}-val_acc={acc}.ckpt`.
